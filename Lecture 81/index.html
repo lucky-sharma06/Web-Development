@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14 Solution</title>
+    <style>
+        body {
+            background-color: black;
+            color: rgb(2, 255, 2);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        setInterval(() => {
+            let last = document.body.getElementsByTagName("div");
+            last = last[last.length - 1];
+            if (!last) return;
+            if (last.innerHTML.endsWith("...")) {
+                last.innerHTML = last.innerHTML.slice(0, last.innerHTML.length - 3);
+            }
+            last.innerHTML += ".";
+        }, 200);
+        const randomDelay = () => {
+            return new Promise((resolve, reject) => {
+                const timeout = Math.floor(Math.random() * 7) + 1;
+                setTimeout(() => {
+                    resolve();
+                }, timeout * 1000);
+            })
+        }
+        async function main() {
+
+            const addItem = async (msg) => {
+                await randomDelay();
+                // remove dots from previous message
+                let prevDiv = document.body.getElementsByTagName("div");
+                prevDiv = prevDiv[prevDiv.length - 1];
+
+                if (prevDiv) {
+                    while (prevDiv.innerHTML.endsWith(".")) {
+                        prevDiv.innerHTML = prevDiv.innerHTML.slice(0, -1);
+                    }
+                }
+                let div = document.createElement("div");
+                div.innerHTML = msg;
+                document.body.append(div);
+            }
+
+            let text = [
+                "Initializing Hacking",
+                "Reading Your Files",
+                "Getting Your Password",
+                "Cleaning Up"
+            ];
+
+            for (const msg of text) {
+                await addItem(msg);
+            }
+        }
+        main();
+    </script>
+</body>
+
+</html>
+<!-- 
+let cnt = 0;
+
+currBlinking = setInterval(() => {
+    cnt = (cnt + 1) % 4;
+
+    span.textContent = ".".repeat(cnt);
+
+}, 500);
+-->
+<!-- 
+const dotStates = ["", ".", "..", "..."];
+
+let index = 0;
+
+currBlinking = setInterval(() => {
+
+    span.textContent = dotStates[index];
+
+    index++;
+
+    if(index === dotStates.length){
+        index = 0;
+    }
+
+}, 500);
+-->
