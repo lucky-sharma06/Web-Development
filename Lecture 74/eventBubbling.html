@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .child{
+            background-color: red;
+            margin: 14px;
+            padding: 14px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        .childContainer{
+            background-color: rgb(60, 0, 255);
+            margin: 14px;
+            padding: 14px;
+            border: 2px solid black;
+        }
+        .container{
+            background-color: green;
+            margin: 15px;
+            padding: 14px;
+            border: 2px solid red;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <section class="childContainer">
+            <div class="child">
+                I am a CHILD
+            </div>
+        </section>
+    </div>
+    <script>
+        document.querySelector(".child").addEventListener("fullscreenchange", (e) => {
+            alert("child was clicked")
+            e.stopPropagation();
+        })
+        document.querySelector(".childContainer").addEventListener("click", function(){
+            alert("childContainer was clicked")
+        })
+        document.querySelector(".container").addEventListener("click", () => {
+            alert("container was clicked")
+        })
+ 
+        let a = setInterval(() => {
+            document.querySelector(".childContainer").style.backgroundColor = "red";
+        }, 3000);
+        clearInterval(a);
+
+        let b = setTimeout(() => {
+            document.querySelector(".child").innerHTML = "Hi";
+        }, 3000)
+        // clearTimeout(b);         
+    </script>
+</body>
+</html>
