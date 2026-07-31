@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Manager</title>
+</head>
+<body>
+    <script>
+        if(localStorage.getItem("name")){
+            let a = localStorage.getItem("name");
+            console.log((localStorage.getItem("name")));
+            document.write("Welcome ", a);
+        }
+        else{   
+            let a = prompt("Enter the name: ");
+            localStorage.setItem("name", a);
+        }
+
+        let obj = {
+            "a": 1,
+            "b": 2
+        }
+        let str = JSON.stringify(obj);
+        localStorage.setItem("object", str);
+        // localStorage.removeItem("object");
+        console.log(JSON.parse(localStorage.getItem("object")));
+
+        // location application -> storage -> local storage
+    </script>
+</body>
+</html>

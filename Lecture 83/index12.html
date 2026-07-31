@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+</head>
+
+<body>
+    <script>
+        /*
+ The Token Manager:
+    You are developing a user authentication system, and you need to manage user authentication tokens. Implement a function named setAuthToken that takes an authentication token and sets it in localStorage with an expiration time.
+*/
+        function setAuthToken(token, expire) {
+            alert("Token is set");
+            localStorage.setItem("token", token);
+            setTimeout(() => {
+                localStorage.removeItem("token");
+                alert();
+            }, expire)
+        }
+
+        let token = prompt("Enter the token: ");
+        setAuthToken(token, 10000);
+    </script>
+</body>
+
+</html>

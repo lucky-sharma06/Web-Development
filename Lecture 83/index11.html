@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Search Bar: <input type="text" name="key" placeholder="Search Products">
+    <button>Search</button>
+    <div class="result"></div>
+    <script>
+        /*
+    11. The Array Filterer:
+    You are building a search feature for your e-commerce site. Write a function named filterProducts that takes an array of product objects and a filter criterion. The function should return a new array containing only the products that match the filter criterion.
+*/
+        document.querySelector("button").addEventListener("click", () => {
+            dove = {
+                name: "Dove",
+                soap: "Dove Soap",
+                shampoo: "Dove Shampoo",
+                conditioner: "Dove Conditioner",
+            }
+            lux = {
+                name: "Lux",
+                soap: "Lux Soap",
+            }
+            nivea = {
+                name: "Nivea",
+                facewash: "Nivea men",
+            }
+            vaseline = {
+                name: "Vaseline",
+                cream: "Vaseline Moisturizer",
+            }
+            let Products = [dove, lux, nivea, vaseline];
+            function filterProducts(Products, criteria) {
+                
+            }
+            let criteria = document.querySelector("input").value;
+            let result = Products.filter((product) => {
+                return Object.hasOwn(product, criteria); // or return product.hasOwnProperty(criteria);
+            });
+            document.querySelector(".result").textContent = JSON.stringify(result);
+        });
+
+    </script>
+</body>
+
+</html>
